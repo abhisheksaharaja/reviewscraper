@@ -1,6 +1,6 @@
 import unittest
 
-from App import app
+from main import app
 import os
 
 
