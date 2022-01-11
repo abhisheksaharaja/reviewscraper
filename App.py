@@ -2,15 +2,22 @@ from flask import Flask,render_template,request,url_for
 from bs4 import BeautifulSoup as BS
 import requests
 from urllib.request import urlopen as URO
-# import pymongo
+import os
+from wsgiref import simple_server
+import flask_monitoringdashboard as dashboard
+from flask_cors import CORS, cross_origin
 
 app=Flask(__name__)
+dashboard.bind(app)
+CORS(app)
 
 @app.route('/',methods=['GET'])
+@cross_origin()
 def homePage():
     return render_template('index.html')
 
 @app.route('/scrap',methods=['POST'])
+@cross_origin()
 def index():
     if request.method=='POST':
         search_data=request.form['content'].replace(" ","")
@@ -65,5 +72,10 @@ def index():
     else:
         return render_template('index.html')
 
-if __name__=='__main__':
-    app.run(debug=True,port=8002)
+
+
+port = int(os.getenv("PORT", 5000))
+if __name__ == "__main__":
+    host = '0.0.0.0'
+    httpd = simple_server.make_server(host, port, app)
+    httpd.serve_forever()
