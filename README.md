@@ -1,4 +1,4 @@
-# reviewscraper Project
+# Reviewscraper Project
 
 ## Inference demo
 - UI for Search Product 
@@ -37,6 +37,11 @@ web: gunicorn main:app
 ## to create requirements.txt
 ```
 pip freeze>requirements.txt
+```
+
+## Define all required library in requirements.txt file
+```
+pip install -r requirements.txt
 ```
 
 ## initialize git repo
