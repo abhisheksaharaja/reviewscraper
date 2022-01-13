@@ -10,6 +10,9 @@
 ## Description
 User will search the required item from search filed. Then all the comments provide by the buyer for that particular item will be fetch from flipkart and show in tabular format.
 
+## Web URL
+<a href="https://reviewscraperapp.herokuapp.com/">URL</a>
+
 ## Setup
 
 ## Create a file "Dockerfile" with below content
