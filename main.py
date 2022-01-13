@@ -22,12 +22,6 @@ def index():
     if request.method=='POST':
         search_data=request.form['content'].replace(" ","")
         try:
-            # db_conn=pymongo.MongoClient('mongodb://127.0.0.1:27017/')
-            # db=db_conn['Scrap_Data']
-            # review=db[search_data].find({})
-            # if review.count()>0:
-            #     return render_template('results.html',reviews=review)
-            # else:
             url='https://www.flipkart.com/search?q='+search_data
             url_client=URO(url)
             link=url_client.read()
@@ -40,8 +34,6 @@ def index():
             link1=requests.get(product_link)
             html_info1=BS(link1.text,'html.parser')
             comments=html_info1.find_all('div',{'class':'_16PBlm'})
-
-                # table=db[search_data]
             review=[]
             for comment in comments:
                 try:
